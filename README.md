@@ -1,21 +1,31 @@
 # Telemetrics
 
-**TODO: Add description**
+Simple elixir telemetry_metrics app.
 
-## Installation
+## Setup
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `telemetrics` to your list of dependencies in `mix.exs`:
+First, install the dependencies.
 
-```elixir
-def deps do
-  [
-    {:telemetrics, "~> 0.1.0"}
-  ]
-end
+```
+mix deps.get
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/telemetrics>.
+then run iex with mix.
 
+```
+iex -S mix
+```
+
+See the telemetry instrumenter/handler in action by calling a function that emit a telemetry event.
+
+```
+iex(1)> emit.(10)
+Metric: Elixir.Telemetry.Metrics.Counter. Current value: 1
+Metric: Elixir.Telemetry.Metrics.Sum. Current value: 10
+:ok
+
+iex(2)> emit.(20)
+Metric: Elixir.Telemetry.Metrics.Counter. Current value: 2
+Metric: Elixir.Telemetry.Metrics.Sum. Current value: 30
+:ok
+```
